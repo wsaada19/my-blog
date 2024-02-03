@@ -5,7 +5,7 @@ export const Footer = (): JSX.Element => {
   return (
     <footer className="mt-4 text-base">
       <hr className="border-gray-300 mb-2" />
-      <a className="text-sm" href="https://github.com/wsaada19/nextjs-contentful-blog">
+      <a className="text-sm" href="https://github.com/wsaada19/my-blog">
         Source code
       </a>
       <Link href="/resume" className="text-sm mx-2">
