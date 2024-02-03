@@ -19,10 +19,17 @@ export default function Resume() {
             <Section title="Relevant Skills">
               <h4 className="text-xl font-semibold">Advanced</h4>
               <List
-                items={['JavaScript', 'Node', 'React & Vue', 'Azure', 'C#', 'DevOps & Testing']}
+                items={[
+                  'JavaScript',
+                  'Node',
+                  'React & Vue',
+                  'Azure & AWS',
+                  'C#',
+                  'DevOps & Testing',
+                ]}
               />
               <h4 className="text-lg font-semibold">Experience with</h4>
-              <List items={['Next.js', 'Express & Fastify', 'CosmosDB & SQL', 'AWS', 'Unity']} />
+              <List items={['Next.js', 'Express & Fastify', 'CosmosDB & SQL', 'Unity']} />
             </Section>
             <Section title="Education">
               <p className="font-semibold">University of Richmond</p>
@@ -100,7 +107,9 @@ const jobs = [
     company: 'Capital One',
     location: 'Richmond, VA',
     date: '2023 - Present',
-    bullets: ['Working on an internal platform for managing micro-frontends at scale.'],
+    bullets: [
+      'Developing on an internal platform for managing micro-frontends and web applications at scale.',
+    ],
   },
   {
     title: 'Senior Associate Software Engineer',
