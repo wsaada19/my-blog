@@ -16,9 +16,9 @@ const options = (linkedEntries, linkedAssets): any => ({
     ),
   },
   renderNode: {
-    [BLOCKS.PARAGRAPH]: (node, children) => <p className="text-lg py-2 md:leading-8">{children}</p>,
+    [BLOCKS.PARAGRAPH]: (node, children) => <p className="text-lg py-1 md:leading-7">{children}</p>,
     [BLOCKS.HEADING_3]: (node, children) => {
-      return <h3 className="my-2 text-blue-800">{children}</h3>;
+      return <h3 className="mt-4 text-blue-800">{children}</h3>;
     },
     [BLOCKS.HEADING_4]: (node, children) => {
       return <h4 className="my-1 text-blue-800">{children}</h4>;
@@ -27,7 +27,7 @@ const options = (linkedEntries, linkedAssets): any => ({
       return <h5 className="my-1 text-blue-800">{children}</h5>;
     },
     [BLOCKS.UL_LIST]: (node, children) => {
-      return <ul className="my-1 list-decimal list-inside">{children}</ul>;
+      return <ul className="my-2 list-disc list-inside">{children}</ul>;
     },
     [BLOCKS.LIST_ITEM]: (node, children) => {
       return <li className="text-base py-1">{children[0].props.children[0]}</li>;
@@ -77,6 +77,7 @@ const options = (linkedEntries, linkedAssets): any => ({
                 language={entry.fields.language}
                 showLineNumbers={false}
                 theme={atomOneDark}
+                wrapLongLines={true}
               />
             </div>
           );
