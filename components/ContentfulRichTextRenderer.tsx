@@ -16,7 +16,7 @@ const options = (linkedEntries, linkedAssets): any => ({
     ),
   },
   renderNode: {
-    [BLOCKS.PARAGRAPH]: (node, children) => <p className="text-lg py-1 md:leading-7">{children}</p>,
+    [BLOCKS.PARAGRAPH]: (node, children) => <p className="text-lg py-2 md:leading-7">{children}</p>,
     [BLOCKS.HEADING_3]: (node, children) => {
       return <h3 className="mt-4 text-blue-800">{children}</h3>;
     },
