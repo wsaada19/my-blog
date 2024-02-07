@@ -2,7 +2,7 @@
 import { BLOCKS, Document, INLINES, MARKS } from '@contentful/rich-text-types';
 import React from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { atomOneDark, CopyBlock } from 'react-code-blocks';
+import { atomOneDark, CodeBlock } from 'react-code-blocks';
 import { ContentfulContentType } from '@services/contentful';
 import { D3GraphContainer } from 'graphs/D3GraphContainer';
 import Image from 'next/image';
@@ -72,7 +72,7 @@ const options = (linkedEntries, linkedAssets): any => ({
         if (entry.sys.contentType.sys.id === ContentfulContentType.CodeSnippet) {
           return (
             <div className="my-3">
-              <CopyBlock
+              <CodeBlock
                 text={entry.fields.codeBlock}
                 language={entry.fields.language}
                 showLineNumbers={false}
