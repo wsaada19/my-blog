@@ -58,7 +58,7 @@ const options = (linkedEntries, linkedAssets): any => ({
                 marginTop: '1rem',
               }}
             />
-            <p className="text-sm font-normal mt-1 mb-4 text-black font-sans dark:text-white">
+            <p className="text-sm font-normal my-1 text-black font-sans dark:text-white">
               {description}
             </p>
           </>
