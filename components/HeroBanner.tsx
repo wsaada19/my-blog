@@ -39,7 +39,7 @@ export const HeroBanner = ({ title, image, summary }: HeroBannerProps) => {
   };
   return (
     <>
-      <h1 className="text-center">{title}</h1>
+      <h1 className="text-center tracking-tight">{title}</h1>
       {getImage()}
     </>
   );

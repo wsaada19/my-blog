@@ -1,6 +1,5 @@
 import { LinkType } from '@types';
 import React from 'react';
-import Link from 'next/link';
 import { BreadcrumbsLd } from './schema/SchemaComponents';
 
 export type BreadcrumbsProps = {
@@ -11,7 +10,7 @@ export const Breadcrumbs = ({ crumbs }: BreadcrumbsProps) => {
   return (
     <>
       <BreadcrumbsLd crumbs={crumbs} />
-      <div className="mb-4">
+      {/* <div className="mb-4">
         {crumbs.map((crumb, index) => {
           const isLast = index === crumbs.length - 1;
           return (
@@ -31,7 +30,7 @@ export const Breadcrumbs = ({ crumbs }: BreadcrumbsProps) => {
             </React.Fragment>
           );
         })}
-      </div>
+      </div> */}
     </>
   );
 };

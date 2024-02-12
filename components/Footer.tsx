@@ -8,9 +8,6 @@ export const Footer = (): JSX.Element => {
       <a className="text-sm" href="https://github.com/wsaada19/my-blog">
         Source code
       </a>
-      <Link href="/resume" className="text-sm mx-2">
-        Resume
-      </Link>
       <span className="flex float-right">
         <Link passHref className="px-2" href="https://github.com/wsaada19">
           <Image

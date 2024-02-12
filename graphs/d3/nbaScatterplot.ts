@@ -36,10 +36,10 @@ export function addScatterPlot(teamData: TeamData[], ref: React.RefObject<HTMLDi
   const xAxisGroup = g
     .append('g')
     .attr('class', 'x axis')
+    .style('color', '#717E8E')
     .attr('transform', `translate(0, ${HEIGHT})`);
 
-  const yAxisGroup = g.append('g').attr('class', 'y axis');
-
+  const yAxisGroup = g.append('g').attr('class', 'y axis').style('color', '#717E8E');
   x.domain([d3.min(teamData, (d) => d.offRating) - 1, d3.max(teamData, (d) => d.offRating) + 1]);
   y.domain([d3.max(teamData, (d) => d.defRating) + 1, d3.min(teamData, (d) => d.defRating) - 1]);
 
@@ -94,7 +94,7 @@ const addLabels = (g) => {
     .attr('font-size', '18px')
     .attr('text-anchor', 'middle')
     .style('font-weight', 'bold')
-    .style('fill', '#14376c')
+    .style('fill', '#000')
     .text('Offensive Rating');
 
   g.append('text')
@@ -105,6 +105,6 @@ const addLabels = (g) => {
     .style('font-weight', 'bold')
     .attr('text-anchor', 'middle')
     .attr('transform', 'rotate(-90)')
-    .style('fill', '#14376c')
+    .style('fill', '#000')
     .text('Defensive Rating');
 };

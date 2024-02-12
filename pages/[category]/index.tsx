@@ -26,11 +26,13 @@ export default function BlogPosts({ posts, page }: BlogProps) {
             >
               <div className="font-semibold">{title}</div>
               <p
-                className={`pt-1 text-sm ${color ? 'text-white' : 'text-gray-700'}dark:text-white`}
+                className={`${category == 'blog' ? '-mb-1' : ''} pt-1 text-sm ${
+                  color ? 'text-white' : 'text-gray-700'
+                }dark:text-white`}
               >
                 {shortSummary}
               </p>
-              <Date dateString={publishDate} />
+              {category == 'blog' && <Date dateString={publishDate} />}
             </LinkCard>
           </li>
         ))}

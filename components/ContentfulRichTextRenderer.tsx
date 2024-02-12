@@ -30,7 +30,7 @@ const options = (linkedEntries, linkedAssets): any => ({
       return <ul className="my-2 list-disc list-inside">{children}</ul>;
     },
     [BLOCKS.LIST_ITEM]: (node, children) => {
-      return <li className="text-base py-1">{children[0].props.children[0]}</li>;
+      return <li className="text-lg py-1">{children[0].props.children[0]}</li>;
     },
     [INLINES.HYPERLINK]: (node, children) => {
       return <a href={node.data.uri}>{children}</a>;
