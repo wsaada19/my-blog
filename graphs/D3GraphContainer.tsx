@@ -3,6 +3,7 @@ import { TeamData } from 'types/nbaTeamData';
 import { addRedditBarChart } from './d3/nbaRedditSubscribers';
 import { addScatterPlot } from './d3/nbaScatterplot';
 import { addOverUnderChart } from './d3/nbaOverUnders';
+import { addShootingPlot } from './d3/shootingPlot';
 
 export type D3GraphContainerProps = {
   graphId: string;
@@ -28,5 +29,7 @@ const getGraphById = (id: string, ref: React.RefObject<HTMLDivElement>, data?: a
     addRedditBarChart(data, ref);
   } else if (id === 'nbaOverUnder') {
     addOverUnderChart(data, ref);
+  } else if (id === 'shootingPlot') {
+    addShootingPlot(data, ref);
   }
 };

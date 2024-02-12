@@ -16,7 +16,13 @@ export const About = ({ name, aboutText }: AboutProps) => {
             Software Engineer, Richmond VA
           </p>
         </div>
-        <Image src="/images/circle-photo.png" height={280} width={280} alt="Me and the doggo" />
+        <Image
+          src="/images/circle-photo.png"
+          height={280}
+          width={280}
+          alt="Me and the doggo"
+          priority={true}
+        />
         <div></div>
       </div>
       <div className="bg-blue-600 shadow-xl mt-5 mb-6 p-3 text-lg text-white md:p-5">
