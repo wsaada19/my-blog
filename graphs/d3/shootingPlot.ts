@@ -19,14 +19,16 @@ type ShootingData = {
 export function addShootingPlot(data: ShootingData[], ref: React.RefObject<HTMLDivElement>) {
   d3.select('#shooting-plot').remove();
   d3.select('#select-box').remove();
-
+  const width = WIDTH + MARGIN.LEFT + MARGIN.RIGHT;
+  const height = HEIGHT + MARGIN.TOP + MARGIN.BOTTOM;
   const svg = d3
     .select(ref.current)
     .append('svg')
     .attr('id', 'shooting-plot')
-    .attr('width', WIDTH + MARGIN.LEFT + MARGIN.RIGHT)
-    .attr('height', HEIGHT + MARGIN.TOP + MARGIN.BOTTOM)
-    .style('background-color', '#fff');
+    .attr('viewBox', `0 0 ${width} ${height}`)
+    .attr('preserveAspectRatio', 'xMinYMin meet')
+    .style('background-color', '#fff')
+    .style('color', '#000');
   const g = svg.append('g').attr('transform', `translate(${MARGIN.LEFT}, ${MARGIN.TOP})`);
 
   // X label
@@ -45,6 +47,7 @@ export function addShootingPlot(data: ShootingData[], ref: React.RefObject<HTMLD
     .style('background-color', 'white')
     .style('border', '1px solid black')
     .style('padding', '5px')
+    .style('color', '#000')
     .selectAll('option')
     .data(
       data
