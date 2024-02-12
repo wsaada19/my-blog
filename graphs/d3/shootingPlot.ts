@@ -35,10 +35,10 @@ export function addShootingPlot(data: ShootingData[], ref: React.RefObject<HTMLD
   g.append('text')
     .attr('class', 'x axis-label')
     .attr('x', WIDTH / 2)
-    .attr('y', HEIGHT + 60)
+    .attr('y', HEIGHT + 55)
     .attr('font-size', '16px')
     .attr('text-anchor', 'middle')
-    .text('Shooting attempts per 36 minutes');
+    .text('3 point attempts per 36 minutes');
 
   // append a select box to the graph
   d3.select(ref.current)
@@ -46,6 +46,7 @@ export function addShootingPlot(data: ShootingData[], ref: React.RefObject<HTMLD
     .attr('id', 'select-box')
     .style('background-color', 'white')
     .style('border', '1px solid black')
+    .style('margin-top', '6px')
     .style('padding', '5px')
     .style('color', '#000')
     .selectAll('option')
@@ -81,11 +82,11 @@ export function addShootingPlot(data: ShootingData[], ref: React.RefObject<HTMLD
   g.append('text')
     .attr('class', 'y axis-label')
     .attr('x', -(HEIGHT / 2))
-    .attr('y', -60)
+    .attr('y', -50)
     .attr('font-size', '16px')
     .attr('text-anchor', 'middle')
     .attr('transform', 'rotate(-90)')
-    .text('Shooting %');
+    .text('3 point shooting %');
 
   const x = d3.scaleLinear().range([0, WIDTH]);
 
