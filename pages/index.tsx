@@ -19,15 +19,14 @@ export default function Home({ allPostsData, homePageData, projects }: HomeProps
   const { name, about, pageDescription, pageTitle } = homePageData;
   return (
     <Layout description={pageDescription} title={`${name} | ${pageTitle}`}>
-      <h1 className="mb-2">{name}</h1>
-      <About aboutText={about} />
+      <About name={name} aboutText={about} />
       <section>
         <h2 className="mb-3">Blog</h2>
         <ul>
           {allPostsData.map(({ title, publishDate, slug, category }) => (
             <li key={slug}>
               <LinkCard className="mb-4 bg-blue-600 text-white" href={`/${category}/${slug}`}>
-                <div className="font-semibold">{title}</div>
+                <div className="font-semibold -mb-1">{title}</div>
                 <Date dateString={publishDate} />
               </LinkCard>
             </li>

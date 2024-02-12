@@ -12,7 +12,7 @@ import { ArticleLd } from '@components/schema/SchemaComponents';
 export default function PostPage({ post, image, includedEntries, assets }: PostLayoutProps) {
   const { title, shortSummary, summary, publishDate } = post;
   return (
-    <PageLayout description={shortSummary} title={title} hideLinks>
+    <PageLayout description={shortSummary} title={title}>
       <ArticleLd description={shortSummary} title={title} datePublished={publishDate} />
       <article className="md:px-14">
         <Breadcrumbs
