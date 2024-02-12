@@ -10,7 +10,7 @@ export const About = ({ name, aboutText }: AboutProps) => {
   return (
     <>
       <div className="flex flex-col-reverse justify-center w-full items-center sm:flex-row sm:justify-between">
-        <div className="grow w-full sm:w-auto">
+        <div className="grow w-full mt-4 sm:mt-0 sm:w-auto">
           <h1 className="sm:text-4xl tracking-tight sm:mt-0">{name}</h1>
           <p className="text-xl sm:text-2xl text-gray-500 tracking-tighter">
             Software Engineer, Richmond VA
