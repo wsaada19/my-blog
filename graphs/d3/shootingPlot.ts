@@ -149,10 +149,8 @@ export function addShootingPlot(data: ShootingData[], ref: React.RefObject<HTMLD
       .on('mouseover', function (event, d: ShootingData) {
         tooltip.html(() => {
           let html = `<p class="title"><strong>${d.name}</strong></p>`;
-          html += `<p> Percentage: <strong>${(d.threePointPercentage * 100).toFixed(
-            1
-          )}%</strong></p>`;
-          html += `<p> Attempts: <strong>${d.shootingAttemptsPer36.toFixed(1)}</strong></p>`;
+          html += `<p><strong>${(d.threePointPercentage * 100).toFixed(1)}%</strong></p>`;
+          html += `<p><strong>${d.shootingAttemptsPer36.toFixed(1)}</strong> attempts per 36</p>`;
           return html;
         });
         tooltip
