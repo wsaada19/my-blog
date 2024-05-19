@@ -35,7 +35,7 @@ export default function PostPage({ post, image, includedEntries, assets }: PostL
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const projectContentfulData = await getEntriesOfType<Post>(ContentfulContentType.Post);
-  const skipPaths = ['nba-rating-chart'];
+  const skipPaths = ['nba-rating-chart', 'wnba-rating-chart'];
   const paths = projectContentfulData.items
     .filter((post) => !skipPaths.includes(post.slug))
     .map((item) => {
