@@ -9,14 +9,14 @@ import { ContentfulContentType, getEntriesOfType } from '@services/contentful';
 import { D3Graph } from 'types/d3Graphic';
 
 export default function Chart({ lastUpdated, teamData, pastTeamData }) {
-  const [data, setData] = useState('current');
-  const changeData = () => {
-    if (data === 'current') {
-      setData('past');
-    } else {
-      setData('current');
-    }
-  };
+  const [data] = useState('current');
+  // const changeData = () => {
+  //   if (data === 'current') {
+  //     setData('past');
+  //   } else {
+  //     setData('current');
+  //   }
+  // };
   return (
     <Layout
       description="A scatter-plot comparing the offensive and defensive rating of all NBA teams"
