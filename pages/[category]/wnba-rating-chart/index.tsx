@@ -28,9 +28,9 @@ export default function Chart({ lastUpdated, teamData, pastTeamData }) {
         2023-24 season. The data comes from <a href="https://stats.wnba.com">stats.wnba.com</a>.
         Hover over the logos to view the offensive, defensive and net rating for each team.
       </p>
-      <button className="text-blue-500 hover:underline" onClick={changeData}>{`${
+      {/* <button className="text-blue-500 hover:underline" onClick={changeData}>{`${
         data === 'current' ? 'See Last Season' : 'See Current Season'
-      }`}</button>
+      }`}</button> */}
       <D3GraphContainer
         graphId="nbaRatingPlot"
         data={data === 'current' ? teamData : pastTeamData}
