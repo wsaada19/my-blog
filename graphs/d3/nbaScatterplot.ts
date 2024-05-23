@@ -17,7 +17,7 @@ export function addScatterPlot(teamData: TeamData[], ref: React.RefObject<HTMLDi
     .attr('id', 'existing-graph')
     .attr('viewBox', `0 0 ${width} ${height}`)
     .attr('preserveAspectRatio', 'xMinYMin meet')
-    .style('background-color', '#ecd6b6')
+    .style('background-color', '#e2c291')
     .style('margin', '0 auto');
 
   const g = svg.append('g').attr('transform', `translate(${MARGIN.LEFT}, ${MARGIN.TOP})`);
@@ -36,12 +36,25 @@ export function addScatterPlot(teamData: TeamData[], ref: React.RefObject<HTMLDi
   const xAxisGroup = g
     .append('g')
     .attr('class', 'x axis')
-    .style('color', '#717E8E')
+    .style('color', '#000')
+    .style('stroke-width', '.6')
     .attr('transform', `translate(0, ${HEIGHT})`);
 
-  const yAxisGroup = g.append('g').attr('class', 'y axis').style('color', '#717E8E');
-  x.domain([d3.min(teamData, (d) => d.offRating) - 1, d3.max(teamData, (d) => d.offRating) + 1]);
-  y.domain([d3.max(teamData, (d) => d.defRating) + 1, d3.min(teamData, (d) => d.defRating) - 1]);
+  const max =
+    d3.max(teamData, (d) => d.offRating) > d3.max(teamData, (d) => d.defRating)
+      ? d3.max(teamData, (d) => d.offRating)
+      : d3.max(teamData, (d) => d.defRating);
+  const min =
+    d3.min(teamData, (d) => d.offRating) < d3.min(teamData, (d) => d.defRating)
+      ? d3.min(teamData, (d) => d.offRating)
+      : d3.min(teamData, (d) => d.defRating);
+  const yAxisGroup = g
+    .append('g')
+    .attr('class', 'y axis')
+    .style('color', '#000')
+    .style('stroke-width', '.6');
+  x.domain([min - 1, max + 1]);
+  y.domain([max + 1, min - 1]);
 
   const xAxisCall = d3.axisBottom(x).tickSize(0).ticks(0);
   xAxisGroup
