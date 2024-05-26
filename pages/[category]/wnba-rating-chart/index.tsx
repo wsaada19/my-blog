@@ -9,14 +9,14 @@ import { ContentfulContentType, getEntriesOfType } from '@services/contentful';
 import { D3Graph } from 'types/d3Graphic';
 
 export default function Chart({ lastUpdated, teamData, pastTeamData }) {
-  const [data] = useState('current');
-  // const changeData = () => {
-  //   if (data === 'current') {
-  //     setData('past');
-  //   } else {
-  //     setData('current');
-  //   }
-  // };
+  const [data, setData] = useState('current');
+  const changeData = () => {
+    if (data === 'current') {
+      setData('past');
+    } else {
+      setData('current');
+    }
+  };
   return (
     <Layout
       description="A scatter-plot comparing the offensive and defensive rating of all NBA teams"
@@ -28,9 +28,9 @@ export default function Chart({ lastUpdated, teamData, pastTeamData }) {
         2023-24 season. The data comes from <a href="https://stats.wnba.com">stats.wnba.com</a>.
         Hover over the logos to view the offensive, defensive and net rating for each team.
       </p>
-      {/* <button className="text-blue-500 hover:underline" onClick={changeData}>{`${
+      <button className="text-blue-500 hover:underline" onClick={changeData}>{`${
         data === 'current' ? 'See Last Season' : 'See Current Season'
-      }`}</button> */}
+      }`}</button>
       <D3GraphContainer
         graphId="nbaRatingPlot"
         data={data === 'current' ? teamData : pastTeamData}
@@ -63,7 +63,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 export const getStaticProps: GetStaticProps = async () => {
   const lastUpdated = new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York' });
   const contentfulD3Data = await getEntriesOfType<D3Graph>(ContentfulContentType.D3Graph);
-  const pastTeamData = contentfulD3Data.items.find((data) => data.graphId === 'nbaNetRating22');
+  const pastTeamData = contentfulD3Data.items.find((data) => data.graphId === 'wnba2023');
   const teamData = contentfulD3Data.items.find((data) => data.graphId === 'wnbaData2024');
 
   return {
