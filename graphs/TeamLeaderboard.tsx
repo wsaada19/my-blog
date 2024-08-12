@@ -25,7 +25,7 @@ export const TeamLeaderBoard = ({ teams, className }: TeamLeaderBoardProps) => {
         <tbody>
           {teams.map((team, index) => {
             return (
-              <tr className="h-10 text-black even:bg-blue-100 odd:bg-gray-100" key={team.name}>
+              <tr className="h-10 text-black even:bg-blue-100 odd:bg-white" key={team.name}>
                 <td className="pl-4 w-1/12">{index + 1}</td>
                 <td className="w-4">
                   <div>
