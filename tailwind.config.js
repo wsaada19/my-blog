@@ -1,5 +1,9 @@
 module.exports = {
-  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+    './graphs/**/*.{js,ts,jsx,tsx}',
+  ],
 
   safelist: [
     'bg-blue-400',
@@ -9,6 +13,7 @@ module.exports = {
     'bg-orange-500',
   ], // TODO remove this and use hex codes for custom colors
   darkMode: 'class',
+  mode: 'jit',
   theme: {
     screens: {
       sm: '640px',
