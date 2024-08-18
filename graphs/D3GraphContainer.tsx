@@ -18,6 +18,7 @@ export const D3GraphContainer = ({ graphId, data = [] }: D3GraphContainerProps) 
   return <div className="my-2" ref={ref}></div>;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getGraphById = (id: string, ref: React.RefObject<HTMLDivElement>, data?: any): void => {
   if (id === 'nbaRatingPlot') {
     if (data.length > 0) {
