@@ -13,7 +13,7 @@ export const About = ({ name, aboutText }: AboutProps) => {
         <div className="grow w-full mt-4 sm:mt-0 sm:w-auto">
           <h1 className="sm:text-4xl tracking-tight sm:mt-0">{name}</h1>
           <p className="text-xl sm:text-2xl text-gray-500 dark:text-gray-400 tracking-tighter">
-            Software Engineer, London UK
+            Software Engineer, London
           </p>
         </div>
         <Image
