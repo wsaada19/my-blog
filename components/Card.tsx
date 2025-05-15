@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import Image from 'next/image';
 import { useWindowSize } from 'utilities/useWindowSize';
+import { contentfulLoader } from 'utilities/loaders';
 
 type CardProps = {
   children: React.ReactNode;
@@ -59,7 +60,8 @@ export const ImageLinkCard = ({ children, href, className = '', image, summary, 
             src={image} 
             alt={summary} 
             width={imageSize.width} 
-            height={imageSize.height} 
+            height={imageSize.height}
+            loader={contentfulLoader}
             className="h-full w-full rounded-lg"
           />
           <Card className={`${className} rounded-b-lg absolute bottom-0 w-full`}>
