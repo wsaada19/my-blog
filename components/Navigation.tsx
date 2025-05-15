@@ -18,7 +18,7 @@ export const Navigation = ({ hideLinks = false }: NavigationProps) => {
             Blog
           </Link>
           <Link href="/portfolio" className="mx-1 md:mx-3">
-            Portfolio
+            Projects
           </Link>
           <Link href="/resume" className="ml-1 md:mx-3">
             Resume

@@ -1,4 +1,4 @@
-export function sortBy<T>(selector: (value: T) => string | number, array: T[]) {
+export function sortBy<T>(selector: (value: T) => string | number | Date, array: T[]) {
   return array.sort((a, b) => {
     const aValue = selector(a);
     const bValue = selector(b);

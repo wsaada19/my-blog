@@ -18,8 +18,9 @@ export const About = ({ name, aboutText }: AboutProps) => {
         </div>
         <Image
           src="/images/circle-photo.png"
-          height={280}
-          width={280}
+          className="rounded-full border-4 border-white"
+          height={260}
+          width={260}
           alt="Me and the doggo"
           priority={true}
         />

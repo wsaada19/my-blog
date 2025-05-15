@@ -1,18 +1,19 @@
-import { ContentfulContentType, getEntriesOfType } from '@services/contentful';
+import { ContentfulContentType, getEntriesOfType, getAssetById } from '@services/contentful';
 import { HomePage, Post } from '@types';
 import { About } from '@components/About';
 import { LinkCard } from '@components/Card';
-import { Date } from '@components/Date';
+import { Date as DateComponent } from '@components/Date';
 import { GetStaticProps } from 'next';
 import Layout from '@components/layouts/PageLayout';
 import React from 'react';
 import { sortBy } from '@utilities';
 import Link from 'next/link';
+import { ImageLinkCard } from '@components/Card';
 
 type HomeProps = {
   allPostsData: Post[];
   homePageData: HomePage;
-  projects: Post[];
+  projects: (Post & { imageUrl?: string })[];
 };
 
 export default function Home({ allPostsData, homePageData, projects }: HomeProps) {
@@ -21,33 +22,36 @@ export default function Home({ allPostsData, homePageData, projects }: HomeProps
     <Layout description={pageDescription} title={`${name} | ${pageTitle}`}>
       <About name={name} aboutText={about} />
       <section>
+        <h2 className="mt-2 mb-4">Projects</h2>
+        <ul className="flex justify-around flex-wrap gap-x-8 gap-y-9">
+          {projects.map(({ title, slug, color, imageUrl, shortSummary }) => (
+            <li className="text-center rounded-lg mb-2" key={slug}>
+              <ImageLinkCard
+                className='text-white bg-blue-600'
+                href={`/portfolio/${slug}`}
+                image={imageUrl}
+                summary={shortSummary}
+                description={shortSummary}
+              >
+                <p className="font-semibold">{title}</p>
+              </ImageLinkCard>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section>
         <h2 className="mb-3">Blog</h2>
         <ul>
           {allPostsData.map(({ title, publishDate, slug, category }) => (
             <li key={slug}>
               <LinkCard className="mb-4 bg-blue-600 text-white" href={`/${category}/${slug}`}>
                 <div className="font-semibold -mb-1">{title}</div>
-                <Date dateString={publishDate} />
+                <DateComponent dateString={publishDate} />
               </LinkCard>
             </li>
           ))}
         </ul>
         <Link href="/blog">View all blog posts</Link>
-      </section>
-      <section>
-        <h2 className="mt-2 mb-3">Projects</h2>
-        <ul className="flex justify-start flex-wrap">
-          {projects.map(({ title, slug, color }) => (
-            <li className="w-full text-center mb-4" key={slug}>
-              <LinkCard
-                className={`text-white ${color ?? 'bg-blue-600'}`}
-                href={`/portfolio/${slug}`}
-              >
-                <p className="font-semibold">{title}</p>
-              </LinkCard>
-            </li>
-          ))}
-        </ul>
       </section>
     </Layout>
   );
@@ -56,7 +60,26 @@ export default function Home({ allPostsData, homePageData, projects }: HomeProps
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getEntriesOfType<Post>(ContentfulContentType.Post);
   const homePage = await getEntriesOfType<HomePage>(ContentfulContentType.HomePage);
-
+  
+  // Filter portfolio posts and prepare them with images
+  const portfolioPosts = posts.items.filter(post => post.category === 'portfolio');
+  const projectsWithImages = await Promise.all(
+    portfolioPosts.map(async (post) => {
+      let imageUrl = null;
+      if (post.summaryImage) {
+        const image = await getAssetById(post.summaryImage.sys.id);
+        if (image && image.fields && image.fields.file) {
+          imageUrl = `https://${image.fields.file.url}`;
+        }
+      }
+      return {
+        ...post,
+        imageUrl
+      };
+    })
+  );
+  const projects = sortBy((p) => new Date(p.publishDate), projectsWithImages).splice(0, 4);
+  console.log(projects);
   return {
     props: {
       allPostsData: sortBy<Post>(
@@ -64,10 +87,7 @@ export const getStaticProps: GetStaticProps = async () => {
         posts.items.filter((post) => post.category === 'blog')
       ).splice(0, 3),
       homePageData: homePage.items[0],
-      projects: sortBy<Post>(
-        (p) => p.publishDate,
-        posts.items.filter((post) => post.category === 'portfolio')
-      ),
+      projects,
     },
   };
 };
