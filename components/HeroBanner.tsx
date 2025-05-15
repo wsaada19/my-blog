@@ -9,7 +9,7 @@ type HeroBannerProps = {
   summary: string;
 };
 
-export const HeroBanner = ({ title, image, summary }: HeroBannerProps) => {
+export const HeroBanner = ({ title, image }: HeroBannerProps) => {
   
   const getImage = (): JSX.Element => {
     if (image.file) {

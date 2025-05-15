@@ -24,7 +24,7 @@ export default function Home({ allPostsData, homePageData, projects }: HomeProps
       <section>
         <h2 className="mt-2 mb-4">Projects</h2>
         <ul className="flex justify-around flex-wrap gap-x-8 gap-y-9">
-          {projects.map(({ title, slug, color, imageUrl, shortSummary }) => (
+          {projects.map(({ title, slug, imageUrl, shortSummary }) => (
             <li className="text-center rounded-lg mb-2" key={slug}>
               <ImageLinkCard
                 className='text-white bg-blue-600'
