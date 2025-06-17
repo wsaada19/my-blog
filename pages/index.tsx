@@ -79,7 +79,6 @@ export const getStaticProps: GetStaticProps = async () => {
     })
   );
   const projects = sortBy((p) => new Date(p.publishDate), projectsWithImages).splice(0, 4);
-  console.log(projects);
   return {
     props: {
       allPostsData: sortBy<Post>(
