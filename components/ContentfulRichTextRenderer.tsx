@@ -7,6 +7,7 @@ import { ContentfulContentType } from '@services/contentful';
 import { D3GraphContainer } from 'graphs/D3GraphContainer';
 import Image from 'next/image';
 import { contentfulLoader } from '@utilities';
+import { YouTubeVideo } from './YouTubeVideo';
 
 const options = (linkedEntries, linkedAssets): any => ({
   renderMark: {
@@ -33,7 +34,35 @@ const options = (linkedEntries, linkedAssets): any => ({
       return <li className="text-lg py-1">{children[0].props.children[0]}</li>;
     },
     [INLINES.HYPERLINK]: (node, children) => {
-      return <a href={node.data.uri}>{children}</a>;
+      const url = node.data.uri;
+      
+      // Check if the URL is a YouTube link
+      const isYouTubeUrl = (url: string): boolean => {
+        const youtubePatterns = [
+          /^https?:\/\/(www\.)?(youtube\.com|youtu\.be)/,
+          /^https?:\/\/(www\.)?youtube\.com\/watch\?.*v=/,
+          /^https?:\/\/youtu\.be\//,
+        ];
+        return youtubePatterns.some(pattern => pattern.test(url));
+      };
+
+      if (isYouTubeUrl(url)) {
+        // Extract title from children if available, otherwise use the URL
+        const title = children && children.length > 0 ? children[0] : url;
+        return <YouTubeVideo url={url} title={typeof title === 'string' ? title : 'YouTube video'} />;
+      }
+
+      // For non-YouTube links, render as regular anchor
+      return (
+        <a 
+          href={url} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:text-blue-800 underline"
+        >
+          {children}
+        </a>
+      );
     },
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       const asset = linkedAssets.find((asset) => asset.sys.id === node.data.target.sys.id);
