@@ -6,7 +6,6 @@ interface YouTubeVideoProps {
 }
 
 export const YouTubeVideo: React.FC<YouTubeVideoProps> = ({ url, title = 'YouTube video' }) => {
-  // Extract video ID from various YouTube URL formats
   const getVideoId = (url: string): string | null => {
     const patterns = [
       /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
@@ -25,7 +24,6 @@ export const YouTubeVideo: React.FC<YouTubeVideoProps> = ({ url, title = 'YouTub
   const videoId = getVideoId(url);
 
   if (!videoId) {
-    // If we can't extract a video ID, fall back to a regular link
     return (
       <a 
         href={url} 
@@ -47,7 +45,6 @@ export const YouTubeVideo: React.FC<YouTubeVideoProps> = ({ url, title = 'YouTub
           className="absolute top-0 left-0 w-full h-full rounded-lg"
           src={embedUrl}
           title={title}
-          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />

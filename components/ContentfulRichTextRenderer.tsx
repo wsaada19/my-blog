@@ -36,7 +36,6 @@ const options = (linkedEntries, linkedAssets): any => ({
     [INLINES.HYPERLINK]: (node, children) => {
       const url = node.data.uri;
       
-      // Check if the URL is a YouTube link
       const isYouTubeUrl = (url: string): boolean => {
         const youtubePatterns = [
           /^https?:\/\/(www\.)?(youtube\.com|youtu\.be)/,
@@ -47,12 +46,10 @@ const options = (linkedEntries, linkedAssets): any => ({
       };
 
       if (isYouTubeUrl(url)) {
-        // Extract title from children if available, otherwise use the URL
         const title = children && children.length > 0 ? children[0] : url;
         return <YouTubeVideo url={url} title={typeof title === 'string' ? title : 'YouTube video'} />;
       }
 
-      // For non-YouTube links, render as regular anchor
       return (
         <a 
           href={url} 
