@@ -40,7 +40,7 @@ export const YouTubeVideo: React.FC<YouTubeVideoProps> = ({ url, title = 'YouTub
 
   return (
     <div className="my-4">
-      <div className="relative w-full" style={{ paddingBottom: '56.25%' /* 16:9 aspect ratio */ }}>
+      <div className="relative w-full" style={{ paddingBottom: '56.25%'}}>
         <iframe
           className="absolute top-0 left-0 w-full h-full rounded-lg"
           src={embedUrl}
